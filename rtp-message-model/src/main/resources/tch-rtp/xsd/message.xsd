@@ -46,6 +46,7 @@ schemaLocation="pain.014.001.05.xsd"/>
 schemaLocation="admi.002.001.01.xsd"/>
  <xsd:import namespace="urn:iso:std:iso:20022:tech:xsd:admi.004.001.02"
 schemaLocation="admi.004.001.02.xsd"/>
+<!-- 
  <xsd:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.001.001.01"
 schemaLocation="admn.001.001.01.xsd"/>
  <xsd:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.002.001.01"
@@ -57,7 +58,7 @@ schemaLocation="admn.004.001.01.xsd"/>
  <xsd:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.005.001.01"
 schemaLocation="admn.005.001.01.xsd"/>
  <xsd:import namespace="urn:iso:std:iso:20022:tech:xsd:admn.006.001.01"
-schemaLocation="admn.006.001.01.xsd"/>
+schemaLocation="admn.006.001.01.xsd"/>  -->
  <xsd:import namespace="urn:iso:std:iso:20022:tech:xsd:head.001.001.01"
 schemaLocation="head.001.001.01.xsd"/>
  <xsd:element name="Message" type="HdrAndData"/>
@@ -74,12 +75,17 @@ schemaLocation="head.001.001.01.xsd"/>
  <xsd:element name="PaymentRequest" type="pr:Document"/>
  <xsd:element name="ResponsePaymentRequest" type="rp:Document"/>
  <xsd:element name="ResponseReturnOfFunds" type="tr:Document"/>
+ 
+ <!-- The following are non-ISO 20022 RTP types for network sign on, sign off, and heartbeat messaging -->
+ <!--  https://www.theclearinghouse.org/payment-systems/rtp/-/media/46e82eec9ad049009aa683fc15535c65.ashx  -->
+ <!-- 
  <xsd:element name="EchoRequest" type="er:Document"/>
  <xsd:element name="EchoResponse" type="re:Document"/>
  <xsd:element name="SignOffRequest" type="fr:Document"/>
  <xsd:element name="SignOffResponse" type="rf:Document"/>
  <xsd:element name="SignOnRequest" type="sr:Document"/>
- <xsd:element name="SignOnResponse" type="rs:Document"/>
+ <xsd:element name="SignOnResponse" type="rs:Document"/> -->
+ 
  <xsd:element name="StandaloneRemittance" type="ar:Document"/>
  <xsd:element name="SystemNotificationEvent" type="ne:Document"/>
  <xsd:element name="MessageReject" type="mr:Document"/>
