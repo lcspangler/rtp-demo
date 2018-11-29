@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * Related Messages. The pacs.002 will confirm that the message has been received and whether
  * or not it passed business validation. 
  * 
- * RTP documentation at: https://www.theclearinghouse.org/payment-systems/rtp/-/media/a211f4af08cb4a298e2909f71a2563e3.ashx
+ * Refer to RTP documentation at: https://www.theclearinghouse.org/payment-systems/rtp/-/media/a211f4af08cb4a298e2909f71a2563e3.ashx
  */
 public class MessageStatusReport {
 
@@ -32,6 +32,24 @@ public class MessageStatusReport {
 	// XML Location: GrpHdr.CreDtTm
 	private LocalDateTime creationDateTime;
 
+	// The Original ID of the Credit Transfer Message
+	// Example: M2015111202120020101BFFF00000000001
+	// XML Location: OrgnlGrpInfAndSts.OrgnlMsgId
+	private String originalMessageId;
+
+	// The Payment Instruction Identification on the original Credit Transfer
+	// Message
+	// Example: 2015111502120020101BFFFF00000000001
+	// XML Location: TxInfAndSts.OrgnlInstrId
+	private String originalPaymentInstructionId;
+
+	// This is the customer reference assigned to the transaction. The E2E
+	// identification must be passed on throughout the entire payment chain without
+	// being changed.
+	// Example: E2E-Ref001
+	// XML Location: CdtTrfTxInf.PmtId.EndToEndId
+	private String endToEndId;
+
 	// The total amount that the Debtor FI is obligated to pay the Creditor FI upon
 	// the Creditor FI’s acceptance of the payment instructed by the Credit Transfer
 	// (pacs.008) message.
@@ -45,17 +63,6 @@ public class MessageStatusReport {
 	// Rule: Only Currency supported by RTP is US Dollar
 	// XML Location: GrpHdr.TtlIntrBkSttlmAmt
 	private String paymentCurrency;
-
-	// The Original ID of the Credit Transfer Message
-	// Example: M2015111202120020101BFFF00000000001
-	// XML Location: OrgnlGrpInfAndSts.OrgnlMsgId
-	private String originalMessageId;
-
-	// The Payment Instruction Identification on the original Credit Transfer
-	// Message
-	// Example: 2015111502120020101BFFFF00000000001
-	// XML Location: TxInfAndSts.OrgnlInstrId
-	private String originalPaymentInstructionId;
 
 	// Specifies the type of the original message, to which this pacs.002 message is
 	// a response

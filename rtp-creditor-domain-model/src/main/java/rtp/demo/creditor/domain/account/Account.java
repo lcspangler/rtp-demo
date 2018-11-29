@@ -6,6 +6,8 @@ public class Account {
 
 	private String accountType;
 
+	private AccountStatus status;
+
 	private Customer customer;
 
 	public String getAccountNumber() {
@@ -24,6 +26,14 @@ public class Account {
 		this.accountType = accountType;
 	}
 
+	public AccountStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(AccountStatus status) {
+		this.status = status;
+	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -39,6 +49,7 @@ public class Account {
 		result = prime * result + ((accountNumber == null) ? 0 : accountNumber.hashCode());
 		result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -66,13 +77,15 @@ public class Account {
 				return false;
 		} else if (!customer.equals(other.customer))
 			return false;
+		if (status != other.status)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Account [accountNumber=" + accountNumber + ", accountType=" + accountType + ", customer=" + customer
-				+ "]";
+		return "Account [accountNumber=" + accountNumber + ", accountType=" + accountType + ", status=" + status
+				+ ", customer=" + customer + "]";
 	}
 
 }
