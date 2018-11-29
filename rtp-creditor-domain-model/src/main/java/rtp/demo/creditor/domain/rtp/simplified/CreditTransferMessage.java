@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /*
- * Examples of fields found on the RTP Credit Transfer Message. Only for demo use.
+ * Examples of fields found on the RTP Credit Transfer Message. For demo use only.
+ * 
+ * An Instructing Agent will use the Credit Transfer Message to initiate a Credit Transfer. 
+ * This message is sent by a Debtor FI to a Creditor FI through RTP.
  * 
  * RTP documentation at: https://www.theclearinghouse.org/payment-systems/rtp/-/media/583eefdd2c5f4359b9c3523ae2db9f65.ashx
  */
