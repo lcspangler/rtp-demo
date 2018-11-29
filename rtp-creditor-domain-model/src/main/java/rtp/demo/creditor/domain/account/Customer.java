@@ -3,6 +3,7 @@ package rtp.demo.creditor.domain.account;
 public class Customer {
 
 	private String firstName;
+
 	private String lastName;
 
 	public String getFirstName() {

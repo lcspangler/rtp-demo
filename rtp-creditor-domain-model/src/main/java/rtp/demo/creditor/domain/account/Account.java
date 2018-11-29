@@ -3,7 +3,9 @@ package rtp.demo.creditor.domain.account;
 public class Account {
 
 	private String accountNumber;
+
 	private String accountType;
+
 	private Customer customer;
 
 	public String getAccountNumber() {

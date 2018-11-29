@@ -8,15 +8,15 @@ import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
 
 public class PaymentValidationRequest {
 
-	private CreditTransferMessage paymentMessage;
+	private CreditTransferMessage creditTransferMessage;
 	private Set<PaymentValidationError> errors = new HashSet<PaymentValidationError>();
 
-	public CreditTransferMessage getPaymentMessage() {
-		return paymentMessage;
+	public CreditTransferMessage getCreditTransferMessage() {
+		return creditTransferMessage;
 	}
 
-	public void setPaymentMessage(CreditTransferMessage paymentMessage) {
-		this.paymentMessage = paymentMessage;
+	public void setCreditTransferMessage(CreditTransferMessage creditTransferMessage) {
+		this.creditTransferMessage = creditTransferMessage;
 	}
 
 	public Set<PaymentValidationError> getErrors() {
@@ -32,7 +32,7 @@ public class PaymentValidationRequest {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((errors == null) ? 0 : errors.hashCode());
-		result = prime * result + ((paymentMessage == null) ? 0 : paymentMessage.hashCode());
+		result = prime * result + ((creditTransferMessage == null) ? 0 : creditTransferMessage.hashCode());
 		return result;
 	}
 
@@ -50,17 +50,17 @@ public class PaymentValidationRequest {
 				return false;
 		} else if (!errors.equals(other.errors))
 			return false;
-		if (paymentMessage == null) {
-			if (other.paymentMessage != null)
+		if (creditTransferMessage == null) {
+			if (other.creditTransferMessage != null)
 				return false;
-		} else if (!paymentMessage.equals(other.paymentMessage))
+		} else if (!creditTransferMessage.equals(other.creditTransferMessage))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "PaymentValidationRequest [paymentMessage=" + paymentMessage + ", errors=" + errors + "]";
+		return "PaymentValidationRequest [creditTransferMessage=" + creditTransferMessage + ", errors=" + errors + "]";
 	}
 
 }
