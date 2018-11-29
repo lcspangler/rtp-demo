@@ -2,8 +2,10 @@ package rtp.demo.creditor.validation.rules;
 
 import rtp.demo.creditor.validation.PaymentValidationRequest;
 import rtp.demo.creditor.domain.account.Account;
+import rtp.demo.creditor.domain.account.AccountStatus;
 import rtp.demo.creditor.domain.error.PaymentValidationError;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
+import rtp.demo.creditor.validation.wrappers.Accounts;
 import rtp.demo.creditor.validation.wrappers.CreditorBank;
 import rtp.demo.creditor.validation.wrappers.ProcessingDateTime;
 import java.util.HashSet;
@@ -59,28 +61,34 @@ end
 
 rule "RTP_CBPV_006 - Validate Credit Transfer Message Payment Account Exists"
   when
-	$pvr : PaymentValidationRequest() 
+  	$accts : Accounts()
+	$pvr : PaymentValidationRequest( $payAcct : creditTransferMessage.creditorAccountNumber ) 
+	not Account( accountNumber == $payAcct ) from $accts.accounts
 	not PaymentValidationError( errorCode == "CPVE_006" ) from $pvr.errors
   then
-    //modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_006", "AC03", "Account number is not valid" )) }
+    modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_006", "AC03", "Account number is not valid" )) }
 end
 
 
 rule "RTP_CBPV_007 - Validate Credit Transfer Message Payment Account Is Not Closed"
   when
-	$pvr : PaymentValidationRequest() 
+  	$accts : Accounts()
+	$pvr : PaymentValidationRequest( $payAcct : creditTransferMessage.creditorAccountNumber ) 
+	Account( accountNumber == $payAcct, status == AccountStatus.fromString("CLOSED") ) from $accts.accounts
 	not PaymentValidationError( errorCode == "CPVE_007" ) from $pvr.errors
   then
-    //modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_007", "AC04", "Number of transactions on message was not 1" )) }
+    modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_007", "AC04", "Account number specified has been closed" )) }
 end
 
 
 rule "RTP_CBPV_008 - Validate Credit Transfer Message Payment Account Is Not Blocked"
   when
-	$pvr : PaymentValidationRequest() 
+  	$accts : Accounts()
+	$pvr : PaymentValidationRequest( $payAcct : creditTransferMessage.creditorAccountNumber ) 
+	Account( accountNumber == $payAcct, status == AccountStatus.fromString("BLOCKED") ) from $accts.accounts
 	not PaymentValidationError( errorCode == "CPVE_008" ) from $pvr.errors
   then
-    //modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_008", "AC06", "Account number specified is blocked" )) }
+    modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_008", "AC06", "Account number specified is blocked" )) }
 end
 
 

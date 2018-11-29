@@ -9,9 +9,9 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
 
-import rtp.demo.creditor.domain.account.Account;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
 import rtp.demo.creditor.validation.PaymentValidationRequest;
+import rtp.demo.creditor.validation.wrappers.Accounts;
 import rtp.demo.creditor.validation.wrappers.CreditorBank;
 import rtp.demo.creditor.validation.wrappers.ProcessingDateTime;
 
@@ -19,10 +19,10 @@ public class PaymentsValidationTestContext {
 
 	private CreditorBank creditor = new CreditorBank();
 	private ProcessingDateTime processingDateTime;
-	private Set<Account> accounts = new HashSet<Account>();
+	private Accounts accounts = new Accounts();
 	private CreditTransferMessage creditTransferMessage = new CreditTransferMessage();
 	private Set<PaymentValidationRequest> validationRequestResults = new HashSet<PaymentValidationRequest>();
-	PaymentValidationRequest validationRequest = new PaymentValidationRequest();
+	private PaymentValidationRequest validationRequest = new PaymentValidationRequest();
 
 	public void executeRules() {
 		validationRequest.setCreditTransferMessage(creditTransferMessage);
@@ -57,11 +57,11 @@ public class PaymentsValidationTestContext {
 		this.processingDateTime = processingDateTime;
 	}
 
-	public Set<Account> getAccounts() {
+	public Accounts getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(Set<Account> accounts) {
+	public void setAccounts(Accounts accounts) {
 		this.accounts = accounts;
 	}
 

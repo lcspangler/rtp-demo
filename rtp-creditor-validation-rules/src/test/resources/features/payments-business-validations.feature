@@ -162,7 +162,7 @@ Scenario: RTP_CBPV_009 - Settlement Method must be CLRG
 
 Given I receive the following Credit Transfer Message:
 | Message Id                          | Creation Date Time  | Number of Transactions | Payment Amount | Payment Currency | Creditor Id | Creditor Account  | Settlement Method |
-| M2018111511021200201BFFF00000000001 | 2018-11-12T10:05:00 | 1                      | 512.23         | USD              | 020010001   | 12000194212199005 | CLRD              |
+| M2018111511021200201BFFF00000000001 | 2018-11-12T10:05:00 | 1                      | 512.23         | USD              | 020010001   | 12000194212199001 | CLRD              |
 
 When I validate the Credit Transfer Message
 

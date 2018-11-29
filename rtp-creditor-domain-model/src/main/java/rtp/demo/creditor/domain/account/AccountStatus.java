@@ -14,4 +14,13 @@ public enum AccountStatus {
 		return status;
 	}
 
+	public static AccountStatus fromString(String code) {
+		for (AccountStatus status : AccountStatus.values()) {
+			if (status.status.equalsIgnoreCase(code)) {
+				return status;
+			}
+		}
+		return null;
+	}
+
 }

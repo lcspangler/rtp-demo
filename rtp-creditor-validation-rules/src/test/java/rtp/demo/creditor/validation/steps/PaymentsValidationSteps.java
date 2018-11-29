@@ -22,6 +22,7 @@ import rtp.demo.creditor.domain.error.PaymentValidationErrorCode;
 import rtp.demo.creditor.domain.error.RtpRejectReasonCode;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
 import rtp.demo.creditor.validation.PaymentValidationRequest;
+import rtp.demo.creditor.validation.wrappers.Accounts;
 import rtp.demo.creditor.validation.wrappers.ProcessingDateTime;
 
 public class PaymentsValidationSteps {
@@ -51,7 +52,6 @@ public class PaymentsValidationSteps {
 	@When("^I validate the Credit Transfer Message$")
 	public void i_validate_the_Payment_Message() throws Throwable {
 		testContext.executeRules();
-
 	}
 
 	@Then("^I expect no validation errors$")
@@ -78,7 +78,8 @@ public class PaymentsValidationSteps {
 		});
 	}
 
-	private Set<Account> makeAccounts(DataTable bankAccountsTable) {
+	private Accounts makeAccounts(DataTable bankAccountsTable) {
+		Accounts accountWrapper = new Accounts();
 		Set<Account> accounts = new HashSet<Account>();
 
 		List<Map<String, String>> rows = bankAccountsTable.asMaps(String.class, String.class);
@@ -92,7 +93,8 @@ public class PaymentsValidationSteps {
 			accounts.add(account);
 		});
 
-		return accounts;
+		accountWrapper.setAccounts(accounts);
+		return accountWrapper;
 	}
 
 	private CreditTransferMessage makeCreditTransferMessage(DataTable creditTransferMessageTable) {
