@@ -144,7 +144,7 @@ Then I expect the following validation errors:
 
 
 #=======================================================================================================================
-Scenario: RTP_CBPV_007 - Account to be credited must not be blocked for payments
+Scenario: RTP_CBPV_008 - Account to be credited must not be blocked for payments
 
 Given I receive the following Credit Transfer Message:
 | Message Id                          | Creation Date Time  | Number of Transactions | Payment Amount | Payment Currency | Creditor Id | Creditor Account  | Settlement Method |
@@ -158,7 +158,7 @@ Then I expect the following validation errors:
 
 
 #=======================================================================================================================
-Scenario: RTP_CBPV_008 - Settlement Method must be CLRG
+Scenario: RTP_CBPV_009 - Settlement Method must be CLRG
 
 Given I receive the following Credit Transfer Message:
 | Message Id                          | Creation Date Time  | Number of Transactions | Payment Amount | Payment Currency | Creditor Id | Creditor Account  | Settlement Method |
@@ -172,7 +172,7 @@ Then I expect the following validation errors:
 
 
 #=======================================================================================================================
-Scenario: RTP_CBPV_009 - Multiple validation errors
+Scenario: RTP_CBPV_000 - Multiple validation errors
 
 Given I receive the following Credit Transfer Message:
 | Message Id                          | Creation Date Time  | Number of Transactions | Payment Amount | Payment Currency | Creditor Id | Creditor Account  | Settlement Method |

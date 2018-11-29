@@ -9,25 +9,93 @@ import java.util.HashSet;
 
 dialect "java"
 
-//rule "test1"
-//no-loop
 
-//	when
-//		not PaymentValidationRequest()
-	
-//	then
-//		insert( new PaymentValidationRequest() );
-	
-//end
+rule "RTP_CBPV_001 - Validate Credit Transfer Message Creation Date and Time"
 
-rule "Test"
-no-loop
   when
-     PaymentValidationRequest()
+
 
   then
-    System.out.println("Hello !");
+
 end
 
 
+rule "RTP_CBPV_002 - Validate Credit Transfer Message Number of Transactions"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_003 - Validate Credit Transfer Message Payment Amount"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_004 - Validate Credit Transfer Message Payment Currency"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_005 - Validate Credit Transfer Message Creditor"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_006 - Validate Credit Transfer Message Payment Account Exists"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_007 - Validate Credit Transfer Message Payment Account Is Open"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_008 - Validate Credit Transfer Message Payment Account Is Not Blocked"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
+
+
+rule "RTP_CBPV_009 - Validate Credit Transfer Message Settlement Method"
+
+  when
+	$pvr : PaymentValidationRequest() 
+
+  then
+
+end
 
