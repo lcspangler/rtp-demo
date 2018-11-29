@@ -1,5 +1,8 @@
 package rtp.demo.creditor.domain.account;
 
+/*
+ * Simple domain class representing an account holder
+ */
 public class Customer {
 
 	private String firstName;

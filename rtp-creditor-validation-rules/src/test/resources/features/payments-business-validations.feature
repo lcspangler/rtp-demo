@@ -130,7 +130,7 @@ Then I expect the following validation errors:
 
 
 #=======================================================================================================================
-Scenario: RTP_CBPV_07 - Account to be credited must open
+Scenario: RTP_CBPV_07 - Account to be credited must be open
 
 Given I receive the following Credit Transfer Message:
 | Message Id                          | Creation Date Time  | Number of Transactions | Payment Amount | Payment Currency | Creditor Id | Creditor Account  | Settlement Method |
