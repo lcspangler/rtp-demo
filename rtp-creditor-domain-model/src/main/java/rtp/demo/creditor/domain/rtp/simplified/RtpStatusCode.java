@@ -10,4 +10,17 @@ public enum RtpStatusCode {
 		this.statusCode = statusCode;
 	}
 
+	public String getStatusCode() {
+		return statusCode;
+	}
+
+	public static RtpStatusCode fromString(String code) {
+		for (RtpStatusCode statusCode : RtpStatusCode.values()) {
+			if (statusCode.statusCode.equalsIgnoreCase(code)) {
+				return statusCode;
+			}
+		}
+		return null;
+	}
+
 }

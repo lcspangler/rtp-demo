@@ -13,4 +13,17 @@ public enum RtpRejectReasonCode {
 		this.rejectReasonCode = rejectReasonCode;
 	}
 
+	public String getRejectReasonCode() {
+		return rejectReasonCode;
+	}
+
+	public static RtpRejectReasonCode fromString(String code) {
+		for (RtpRejectReasonCode rejectReasonCode : RtpRejectReasonCode.values()) {
+			if (rejectReasonCode.rejectReasonCode.equalsIgnoreCase(code)) {
+				return rejectReasonCode;
+			}
+		}
+		return null;
+	}
+
 }

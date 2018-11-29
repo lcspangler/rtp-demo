@@ -11,7 +11,7 @@ public class Account {
 
 	private AccountStatus status;
 
-	private Customer customer;
+	private Customer customer = new Customer();
 
 	public String getAccountNumber() {
 		return accountNumber;

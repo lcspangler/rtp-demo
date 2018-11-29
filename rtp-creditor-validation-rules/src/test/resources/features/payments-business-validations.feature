@@ -154,7 +154,7 @@ When I validate the Credit Transfer Message
 
 Then I expect the following validation errors:
 | Internal Error Code | RTP Reject Reason Code | Error Message                                             | 
-| CPVE_007            | AC06                   | Account number specified is blocked                       | 
+| CPVE_008            | AC06                   | Account number specified is blocked                       | 
 
 
 #=======================================================================================================================
@@ -168,7 +168,7 @@ When I validate the Credit Transfer Message
 
 Then I expect the following validation errors:
 | Internal Error Code | RTP Reject Reason Code | Error Message                                             | 
-| CPVE_008            | AC06                   | Settlement method is invalid                              | 
+| CPVE_009            | AC06                   | Settlement method is invalid                              | 
 
 
 #=======================================================================================================================
