@@ -23,7 +23,6 @@ dialect "java"
 rule "Test"
 no-loop
   when
-  	 PaymentValidationRequest()
      //PaymentValidationRequest()
 
   then

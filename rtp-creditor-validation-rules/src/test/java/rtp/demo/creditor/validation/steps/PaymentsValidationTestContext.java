@@ -32,9 +32,9 @@ public class PaymentsValidationTestContext {
 		List<Command> cmds = new ArrayList<Command>();
 		cmds.add(CommandFactory.newInsert(creditor));
 		cmds.add(CommandFactory.newInsert(processingDateTime));
-		cmds.add(CommandFactory.newInsert(validationRequest, "validationRequest"));
+		cmds.add(CommandFactory.newInsert(validationRequest));
 		cmds.add(CommandFactory.newInsertElements(accounts));
-		cmds.add(CommandFactory.newFireAllRules(1000));
+		cmds.add(CommandFactory.newFireAllRules());
 		// cmds.add(CommandFactory.newQuery("getValidationResults",
 		// "getValidationResults"));
 
@@ -42,12 +42,7 @@ public class PaymentsValidationTestContext {
 		KieContainer kContainer = ks.getKieClasspathContainer();
 
 		StatelessKieSession kSession = kContainer.newStatelessKieSession("payments-validation-ksession");
-		System.out.println("\n\nRunning Rules");
 		kSession.execute(cmds);
-
-		System.out.println("PVR: " + validationRequest);
-		System.out.println("Done Running Rules");
-
 	}
 
 	public CreditorBank getCreditor() {
