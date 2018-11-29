@@ -70,7 +70,7 @@ When I validate the Credit Transfer Message
 
 Then I expect the following validation errors:
 | Internal Error Code | RTP Reject Reason Code | Error Message                                             | 
-| CPVE_002            | 650                    | Number of transactions on message was not 1               | 
+| CPVE_002            | 650                    | Number of transactions on message was not one             | 
 
 
 #=======================================================================================================================
@@ -168,7 +168,7 @@ When I validate the Credit Transfer Message
 
 Then I expect the following validation errors:
 | Internal Error Code | RTP Reject Reason Code | Error Message                                             | 
-| CPVE_009            | AC06                   | Settlement method is invalid                              | 
+| CPVE_009            | 650                    | Settlement method is invalid                              | 
 
 
 #=======================================================================================================================

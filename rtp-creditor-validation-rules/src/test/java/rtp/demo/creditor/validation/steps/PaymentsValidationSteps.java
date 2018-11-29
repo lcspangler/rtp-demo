@@ -65,6 +65,10 @@ public class PaymentsValidationSteps {
 	public void i_expect_the_following_validation_results(DataTable validationErrorsTable) throws Throwable {
 		List<PaymentValidationError> expectedErrors = makeValidationErrors(validationErrorsTable);
 		Set<PaymentValidationError> actualErrors = testContext.getValidationRequest().getErrors();
+
+		System.out.println("\n\nExpected errors: " + expectedErrors);
+		System.out.println("Actual errors: " + actualErrors);
+
 		assertEquals(expectedErrors.size(), actualErrors.size());
 
 		testContext.getValidationRequest().getErrors().forEach(actualError -> {

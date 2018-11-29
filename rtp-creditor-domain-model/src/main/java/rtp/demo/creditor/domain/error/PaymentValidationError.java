@@ -8,6 +8,25 @@ public class PaymentValidationError {
 
 	private String errorMessage;
 
+	public PaymentValidationError() {
+		super();
+	}
+
+	public PaymentValidationError(PaymentValidationErrorCode errorCode, RtpRejectReasonCode rtpReasonCode,
+			String errorMessage) {
+		super();
+		this.errorCode = errorCode;
+		this.rtpReasonCode = rtpReasonCode;
+		this.errorMessage = errorMessage;
+	}
+
+	public PaymentValidationError(String errorCode, String rtpReasonCode, String errorMessage) {
+		super();
+		this.errorCode = PaymentValidationErrorCode.fromString(errorCode);
+		this.rtpReasonCode = RtpRejectReasonCode.fromString(rtpReasonCode);
+		this.errorMessage = errorMessage;
+	}
+
 	public PaymentValidationErrorCode getErrorCode() {
 		return errorCode;
 	}
