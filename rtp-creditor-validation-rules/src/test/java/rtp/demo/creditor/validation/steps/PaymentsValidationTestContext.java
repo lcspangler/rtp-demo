@@ -32,10 +32,11 @@ public class PaymentsValidationTestContext {
 		List<Command> cmds = new ArrayList<Command>();
 		cmds.add(CommandFactory.newInsert(creditor));
 		cmds.add(CommandFactory.newInsert(processingDateTime));
+		cmds.add(CommandFactory.newInsert(validationRequest, "validationRequest"));
 		cmds.add(CommandFactory.newInsertElements(accounts));
-		cmds.add(CommandFactory.newInsert(validationRequest));
 		cmds.add(CommandFactory.newFireAllRules(1000));
-		cmds.add(CommandFactory.newQuery("id", "name"));
+		// cmds.add(CommandFactory.newQuery("getValidationResults",
+		// "getValidationResults"));
 
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kContainer = ks.getKieClasspathContainer();
@@ -43,9 +44,9 @@ public class PaymentsValidationTestContext {
 		StatelessKieSession kSession = kContainer.newStatelessKieSession("payments-validation-ksession");
 		System.out.println("\n\nRunning Rules");
 		kSession.execute(cmds);
+
+		System.out.println("PVR: " + validationRequest);
 		System.out.println("Done Running Rules");
-//		kSession.getQueryResults("", "");
-//
 
 	}
 
