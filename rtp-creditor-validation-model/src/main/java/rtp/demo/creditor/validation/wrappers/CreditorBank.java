@@ -1,8 +1,5 @@
-package rtp.demo.creditor.domain.fi;
+package rtp.demo.creditor.validation.wrappers;
 
-/*
- * Simple domain class representing the Creditor, the bank receiving RTP payments
- */
 public class CreditorBank {
 
 	private String routingAndTransitNumber;
@@ -44,5 +41,4 @@ public class CreditorBank {
 	public String toString() {
 		return "CreditorBank [routingAndTransitNumber=" + routingAndTransitNumber + "]";
 	}
-
 }

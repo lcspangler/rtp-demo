@@ -16,6 +16,7 @@ import rtp.demo.creditor.domain.account.Account;
 import rtp.demo.creditor.domain.error.PaymentValidationError;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
 import rtp.demo.creditor.validation.PaymentValidationRequest;
+import rtp.demo.creditor.validation.wrappers.ProcessingDateTime;
 
 public class PaymentsValidationSteps {
 
@@ -71,8 +72,9 @@ public class PaymentsValidationSteps {
 		return creditTransferMessage;
 	}
 
-	private LocalDateTime makeProcessingDateTime(String dateTimeIso) {
-		LocalDateTime processingDateTime = LocalDateTime.parse(dateTimeIso);
+	private ProcessingDateTime makeProcessingDateTime(String dateTimeIso) {
+		ProcessingDateTime processingDateTime = new ProcessingDateTime();
+		processingDateTime.setProcessingDateTime(LocalDateTime.parse(dateTimeIso));
 		return processingDateTime;
 	}
 

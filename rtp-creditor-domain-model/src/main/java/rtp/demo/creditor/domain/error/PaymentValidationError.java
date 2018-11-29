@@ -2,9 +2,19 @@ package rtp.demo.creditor.domain.error;
 
 public class PaymentValidationError {
 
+	private PaymentValidationErrorCode errorCode;
+
 	private RtpRejectReasonCode rtpReasonCode;
 
 	private String errorMessage;
+
+	public PaymentValidationErrorCode getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(PaymentValidationErrorCode errorCode) {
+		this.errorCode = errorCode;
+	}
 
 	public RtpRejectReasonCode getRtpReasonCode() {
 		return rtpReasonCode;
@@ -26,6 +36,7 @@ public class PaymentValidationError {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((errorCode == null) ? 0 : errorCode.hashCode());
 		result = prime * result + ((errorMessage == null) ? 0 : errorMessage.hashCode());
 		result = prime * result + ((rtpReasonCode == null) ? 0 : rtpReasonCode.hashCode());
 		return result;
@@ -40,6 +51,11 @@ public class PaymentValidationError {
 		if (getClass() != obj.getClass())
 			return false;
 		PaymentValidationError other = (PaymentValidationError) obj;
+		if (errorCode == null) {
+			if (other.errorCode != null)
+				return false;
+		} else if (!errorCode.equals(other.errorCode))
+			return false;
 		if (errorMessage == null) {
 			if (other.errorMessage != null)
 				return false;
@@ -52,7 +68,8 @@ public class PaymentValidationError {
 
 	@Override
 	public String toString() {
-		return "PaymentValidationError [rtpReasonCode=" + rtpReasonCode + ", errorMessage=" + errorMessage + "]";
+		return "PaymentValidationError [errorCode=" + errorCode + ", rtpReasonCode=" + rtpReasonCode + ", errorMessage="
+				+ errorMessage + "]";
 	}
 
 }

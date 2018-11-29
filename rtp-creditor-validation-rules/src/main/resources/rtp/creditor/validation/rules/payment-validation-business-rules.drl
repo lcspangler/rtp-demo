@@ -2,8 +2,10 @@ package rtp.demo.creditor.validation.rules;
 
 import rtp.demo.creditor.validation.PaymentValidationRequest;
 import rtp.demo.creditor.domain.account.Account;
-import rtp.demo.creditor.domain.fi.CreditorBank;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
+import rtp.demo.creditor.validation.wrappers.CreditorBank;
+import rtp.demo.creditor.validation.wrappers.ProcessingDateTime;
+import java.util.HashSet;
 
 dialect "java"
 
@@ -14,3 +16,10 @@ no-loop
   then
     System.out.println("Hello !");
 end
+
+
+query getValidationResults
+    $validationResults := HashSet() from collect ( PaymentValidationRequest() )
+end
+
+

@@ -1,39 +1,52 @@
 package rtp.demo.creditor.validation.steps;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.kie.api.KieServices;
+import org.kie.api.command.Command;
 import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.StatelessKieSession;
+import org.kie.internal.command.CommandFactory;
 
 import rtp.demo.creditor.domain.account.Account;
-import rtp.demo.creditor.domain.fi.CreditorBank;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
 import rtp.demo.creditor.validation.PaymentValidationRequest;
+import rtp.demo.creditor.validation.wrappers.CreditorBank;
+import rtp.demo.creditor.validation.wrappers.ProcessingDateTime;
 
 public class PaymentsValidationTestContext {
 
 	private CreditorBank creditor = new CreditorBank();
-	private LocalDateTime processingDateTime;
+	private ProcessingDateTime processingDateTime;
 	private Set<Account> accounts = new HashSet<Account>();
 	private CreditTransferMessage creditTransferMessage = new CreditTransferMessage();
 	private Set<PaymentValidationRequest> validationRequestResults = new HashSet<PaymentValidationRequest>();
 
 	public void executeRules() {
+		PaymentValidationRequest validationRequest = new PaymentValidationRequest();
+		validationRequest.setCreditTransferMessage(creditTransferMessage);
+
+		List<Command> cmds = new ArrayList<Command>();
+		cmds.add(CommandFactory.newInsert(creditor));
+		cmds.add(CommandFactory.newInsert(processingDateTime));
+		cmds.add(CommandFactory.newInsertElements(accounts));
+		cmds.add(CommandFactory.newInsert(validationRequest));
+		cmds.add(CommandFactory.newFireAllRules(1000));
+		cmds.add(CommandFactory.newQuery("id", "name"));
 
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kContainer = ks.getKieClasspathContainer();
 
-		KieSession kSession = kContainer.newKieSession("payments-validation-ksession");
-		// kSession.insert(new Message("Dave", "Hello, HAL. Do you read me, HAL?"));
+		StatelessKieSession kSession = kContainer.newStatelessKieSession("payments-validation-ksession");
 		System.out.println("\n\nRunning Rules");
-		kSession.fireAllRules();
+		kSession.execute(cmds);
 		System.out.println("Done Running Rules");
-		kSession.getQueryResults("", "");
+//		kSession.getQueryResults("", "");
+//
 
-		kSession.destroy();
 	}
 
 	public CreditorBank getCreditor() {
@@ -44,11 +57,11 @@ public class PaymentsValidationTestContext {
 		this.creditor = creditor;
 	}
 
-	public LocalDateTime getProcessingDateTime() {
+	public ProcessingDateTime getProcessingDateTime() {
 		return processingDateTime;
 	}
 
-	public void setProcessingDateTime(LocalDateTime processingDateTime) {
+	public void setProcessingDateTime(ProcessingDateTime processingDateTime) {
 		this.processingDateTime = processingDateTime;
 	}
 
