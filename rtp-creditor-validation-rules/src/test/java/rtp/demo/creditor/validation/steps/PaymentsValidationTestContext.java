@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.kie.api.KieServices;
-import org.kie.api.command.Command;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
-import org.kie.internal.command.CommandFactory;
 
 import rtp.demo.creditor.domain.account.Account;
 import rtp.demo.creditor.domain.rtp.simplified.CreditTransferMessage;
@@ -24,25 +22,23 @@ public class PaymentsValidationTestContext {
 	private Set<Account> accounts = new HashSet<Account>();
 	private CreditTransferMessage creditTransferMessage = new CreditTransferMessage();
 	private Set<PaymentValidationRequest> validationRequestResults = new HashSet<PaymentValidationRequest>();
+	PaymentValidationRequest validationRequest = new PaymentValidationRequest();
 
 	public void executeRules() {
-		PaymentValidationRequest validationRequest = new PaymentValidationRequest();
 		validationRequest.setCreditTransferMessage(creditTransferMessage);
-
-		List<Command> cmds = new ArrayList<Command>();
-		cmds.add(CommandFactory.newInsert(creditor));
-		cmds.add(CommandFactory.newInsert(processingDateTime));
-		cmds.add(CommandFactory.newInsert(validationRequest));
-		cmds.add(CommandFactory.newInsertElements(accounts));
-		cmds.add(CommandFactory.newFireAllRules());
-		// cmds.add(CommandFactory.newQuery("getValidationResults",
-		// "getValidationResults"));
 
 		KieServices ks = KieServices.Factory.get();
 		KieContainer kContainer = ks.getKieClasspathContainer();
 
 		StatelessKieSession kSession = kContainer.newStatelessKieSession("payments-validation-ksession");
-		kSession.execute(cmds);
+
+		List<Object> facts = new ArrayList<Object>();
+		facts.add(creditor);
+		facts.add(processingDateTime);
+		facts.add(accounts);
+		facts.add(validationRequest);
+
+		kSession.execute(facts);
 	}
 
 	public CreditorBank getCreditor() {
@@ -83,6 +79,14 @@ public class PaymentsValidationTestContext {
 
 	public void setValidationRequestResults(Set<PaymentValidationRequest> validationRequestResults) {
 		this.validationRequestResults = validationRequestResults;
+	}
+
+	public PaymentValidationRequest getValidationRequest() {
+		return validationRequest;
+	}
+
+	public void setValidationRequest(PaymentValidationRequest validationRequest) {
+		this.validationRequest = validationRequest;
 	}
 
 }

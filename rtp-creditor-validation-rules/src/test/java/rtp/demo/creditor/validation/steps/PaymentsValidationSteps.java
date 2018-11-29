@@ -1,5 +1,6 @@
 package rtp.demo.creditor.validation.steps;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
@@ -63,6 +64,14 @@ public class PaymentsValidationSteps {
 	@Then("^I expect the following validation errors:$")
 	public void i_expect_the_following_validation_results(DataTable validationErrorsTable) throws Throwable {
 		List<PaymentValidationError> expectedErrors = makeValidationErrors(validationErrorsTable);
+		Set<PaymentValidationError> actualErrors = testContext.getValidationRequest().getErrors();
+		assertEquals(expectedErrors.size(), actualErrors.size());
+
+		testContext.getValidationRequest().getErrors().forEach(actualError -> {
+			expectedErrors.forEach(expectedError -> {
+
+			});
+		});
 	}
 
 	private Set<Account> makeAccounts(DataTable bankAccountsTable) {
