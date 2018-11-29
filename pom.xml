@@ -13,6 +13,9 @@
   
   <modules>
     <module>rtp-message-model</module>
+    <module>rtp-creditor-domain-model</module>
+    <module>rtp-creditor-validation-model</module>
+    <module>rtp-creditor-validation-rules</module>
   </modules>
   
   <profiles>
