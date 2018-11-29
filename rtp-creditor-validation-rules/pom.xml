@@ -5,7 +5,7 @@
   <artifactId>rtp-creditor-validation-rules</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0.0</version>
-  <name>rtp-message-model</name>
+  <name>rtp-creditor-validation-rules</name>
   <url>http://maven.apache.org</url>
 
   <properties>
