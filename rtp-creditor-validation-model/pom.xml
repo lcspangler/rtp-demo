@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
-  <artifactId>rtp-message-model</artifactId>
+  <artifactId>rtp-creditor-validation-model</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0.0</version>
-  <name>rtp-message-model</name>
+  <name>rtp-creditor-validation-model</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
@@ -33,7 +33,7 @@
   </dependencies>
   
   <build>
-    <finalName>rtp-message-model</finalName>
+    <finalName>rtp-creditor-validation-model</finalName>
       <plugins>    
     	<plugin>    
         	<artifactId>maven-compiler-plugin</artifactId>
@@ -54,7 +54,7 @@
      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
      <id>openshift</id>
      <build>
-        <finalName>rtp-messaging-model</finalName>
+        <finalName>rtp-creditor-validation-model</finalName>
         <plugins>
           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
