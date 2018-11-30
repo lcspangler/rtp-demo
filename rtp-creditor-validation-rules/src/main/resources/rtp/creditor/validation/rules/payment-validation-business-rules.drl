@@ -14,13 +14,6 @@ import java.math.BigDecimal;
 dialect "java"
 
 
-rule "RTP_CBPV_001 - Validate Credit Transfer Message Creation Date and Time"
-  when
-
-
-  then
-end
-
 
 rule "RTP_CBPV_002 - Validate Credit Transfer Message Number of Transactions"
   when
@@ -99,4 +92,12 @@ rule "RTP_CBPV_009 - Validate Credit Transfer Message Settlement Method"
   then
     modify( $pvr ) { getErrors().add( new PaymentValidationError( "CPVE_009", "650", "Settlement method is invalid" )) }
 end
+
+
+
+
+//rule "RTP_CBPV_001 - Validate Credit Transfer Message Creation Date and Time"
+//  when
+//  then
+//end
 

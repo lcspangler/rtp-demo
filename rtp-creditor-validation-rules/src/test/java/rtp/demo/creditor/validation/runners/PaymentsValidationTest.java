@@ -6,7 +6,8 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = { "classpath:features" }, glue = { "rtp.demo.creditor.validation.steps" })
+@CucumberOptions(features = { "classpath:features" }, glue = { "rtp.demo.creditor.validation.steps" }, tags = {
+		"~@Ignore" })
 public class PaymentsValidationTest {
 
 }

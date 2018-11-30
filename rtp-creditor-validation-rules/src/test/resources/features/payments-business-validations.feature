@@ -32,6 +32,7 @@ Then I expect no validation errors
 
 
 #=======================================================================================================================
+@Ignore
 Scenario: RTP_CBPV_001 - Credit Transfer Message creation date must be within 1 calendar day of current processing date and time
 
 Given I receive the following Credit Transfer Message:
@@ -172,6 +173,7 @@ Then I expect the following validation errors:
 
 
 #=======================================================================================================================
+@Ignore
 Scenario: RTP_CBPV_000 - Multiple validation errors
 
 Given I receive the following Credit Transfer Message:
