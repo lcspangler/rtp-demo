@@ -16,6 +16,7 @@
     <module>rtp-creditor-domain-model</module>
     <module>rtp-creditor-validation-model</module>
     <module>rtp-creditor-validation-rules</module>
+    <module>rtp-creditor-payments-intake-service</module>
   </modules>
   
   <profiles>
