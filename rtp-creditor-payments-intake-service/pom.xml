@@ -15,18 +15,6 @@
 		<version>2.2.1.GA</version>
 		<scope>provided</scope>
 	</dependency>
-	
-<dependency>
-    <groupId>org.apache.camel</groupId>
-    <artifactId>camel-core</artifactId>
-    <version>2.23.0</version>
-</dependency>
-	
-<dependency>
-    <groupId>org.apache.camel</groupId>
-    <artifactId>camel-restlet</artifactId>
-    <version>2.23.0</version>
-</dependency>
 
   <!-- Kafka -->
 	<dependency>
@@ -64,13 +52,13 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
-    <finalName>rtp-creditor-payments-intake-service</finalName>
+    <finalName>hello-strimzi-producer</finalName>
     <plugins>    
     	<plugin>    
         	<artifactId>maven-compiler-plugin</artifactId>

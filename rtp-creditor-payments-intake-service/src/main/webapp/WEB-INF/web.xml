@@ -6,15 +6,12 @@
     <display-name>Test Application</display-name>
 
 	<!-- Auto scan REST service -->
-	
-	<!--
 	<context-param>
 		<param-name>resteasy.scan</param-name>
 		<param-value>true</param-value>
-	</context-param> -->
+	</context-param>
 	
 	<!-- this need same with resteasy servlet url-pattern -->
-	<!--  
 	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/rest</param-value>
@@ -36,30 +33,7 @@
 	<servlet-mapping>
 		<servlet-name>resteasy-servlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>-->
-	
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:camel-context.xml</param-value>
-    </context-param>
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <servlet>
-        <servlet-name>RestletServlet</servlet-name>
-        <servlet-class>org.restlet.ext.spring.SpringServerServlet</servlet-class>
-        <init-param>
-            <param-name>org.restlet.component</param-name>
-            <param-value>RestletComponent</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>RestletServlet</servlet-name>
-        <url-pattern>/rs/*</url-pattern>
-    </servlet-mapping>
+	</servlet-mapping>
 
 
 </web-app>
