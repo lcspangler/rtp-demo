@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
-  <artifactId>rtp-creditor-payments-intake-service</artifactId>
+  <artifactId>rtp-creditor-intake</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>rtp-creditor-payments-intake-service</name>
+  <name>rtp-creditor-intake</name>
 
   <dependencies>
   <!--  RestEasy -->
@@ -79,7 +79,7 @@
      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
      <id>openshift</id>
      <build>
-        <finalName>rtp-creditor-payments-intake-service</finalName>
+        <finalName>rtp-creditor-intake</finalName>
         <plugins>
           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
