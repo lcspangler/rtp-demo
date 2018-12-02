@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  
+
   <groupId>org.example</groupId>
   <artifactId>rtp-demo</artifactId>
-  <version>1.0.0.0</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modelVersion>4.0.0</modelVersion>
 
   <name>RTP Demo:: Aggregate POM</name>
   <description>RTP Payments Example</description>
 
-  
+
+
   <modules>
     <module>rtp-message-model</module>
     <module>rtp-creditor-domain-model</module>
     <module>rtp-creditor-validation-model</module>
     <module>rtp-creditor-validation-rules</module>
-    <module>rtp-creditor-intake</module>
   </modules>
-  
+
   <profiles>
     <profile>
      <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
@@ -26,6 +26,12 @@
      <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
      <id>openshift</id>
+     <repositories>
+        <repository>
+           <id>localrepository</id>
+           <url>/opt/app-root/src/.m2/repository</url>
+        </repository>
+     </repositories>
      <build>
      </build>
     </profile>
